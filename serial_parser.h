@@ -7,12 +7,13 @@ struct serial_parser {
   bool in_sync;
 
   inline char* get_next_token() {
+    a = b;
     while (*b != ',' && *b != '\0')
       b++;
 
     if (*b == ',') {
       *b = '\0';
-      a = b = b+1;
+      b = b+1;
     }
     return a;
   }
