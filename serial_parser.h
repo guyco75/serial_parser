@@ -22,7 +22,7 @@ struct serial_parser {
     return strtol(get_next_token(), NULL, 10);
   }
 
-  inline boolean verify_ending() {
+  inline bool verify_ending() {
     return (a == p);
   }
 
