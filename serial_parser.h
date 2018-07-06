@@ -57,5 +57,7 @@ struct serial_parser {
   }
 };
 
+serial_parser ser_parser;
+
 #endif
 
