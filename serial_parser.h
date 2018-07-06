@@ -18,8 +18,11 @@ struct serial_parser {
     return a;
   }
 
-  long int get_next_token_int() {
-    return strtol(get_next_token(), NULL, 10);
+  bool get_next_token_int(int32_t *val) {
+    char *s, *p;
+    s = get_next_token();
+    *val = strtol(s, &p, 10);
+    return (p != s && *p == '\0');
   }
 
   inline bool verify_ending() {
