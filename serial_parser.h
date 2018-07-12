@@ -1,6 +1,13 @@
 #ifndef SERIAL_PARSER_H
 #define SERIAL_PARSER_H
 
+char rs_str[SERIAL_OUT_BUF_SIZE];
+#define serial_out(_s, _f...) \
+  do { \
+    snprintf((_s), sizeof(_s), _f); \
+    Serial.println(_s); \
+  } while (0);
+
 struct serial_parser {
   char rx_cmd_str[SERIAL_CMD_BUF_SIZE];
   char *p, *a, *b;
