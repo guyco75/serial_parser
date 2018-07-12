@@ -65,6 +65,18 @@ struct serial_parser {
     }
     return false;
   }
+
+  bool simulate_serial_in(const char* str) {
+    if (strlen(str) < sizeof(rx_cmd_str)) {
+      snprintf(rx_cmd_str, sizeof(rx_cmd_str), "%s", str);
+      a = b = rx_cmd_str;
+      in_sync = false;
+      return true;
+    } else {
+      rx_cmd_str[0] = '\0';
+      return false;
+    }
+  }
 };
 
 serial_parser ser_parser;
